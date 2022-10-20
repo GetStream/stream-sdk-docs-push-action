@@ -1,0 +1,49 @@
+name: "Push Stream SDK doc files to Stream SDK Docs repo"
+description: "Push Stream SDK Documentation files from individual SDKs to the Central repo"
+inputs:
+    commit-message:
+        default: "Update from ORIGIN_COMMIT"
+        description: "[Optional] commit message for the output repository. ORIGIN_COMMIT is replaced by the URL@commit in the origin repo"
+        required: false
+    destination-github-username:
+        default: "GetStream"
+        description: "Name of the destination username/organization"
+        required: false
+    destination-repository-name:
+        default: "stream-sdk-docs"
+        description: "Destination repository"
+        required: false
+    source-directory:
+        default: "docusaurus"
+        description: "Source directory from the origin directory"
+        required: false
+    product-directory:
+        description: "Product directory where the documentation should go. Eg: chat, video, etc."
+        required: true
+    target-branch:
+        default: "staging"
+        description: '[Optional] set target branch name for the destination repository. Defaults to "staging"'
+        required: false
+    git-username:
+        default: "stream-ci-bot"
+        description: "[Optional] Name for the git commit. Defaults to the CI Bot name"
+        required: false
+    git-email:
+        default: ""
+        description: "[Optional] Email for the git commit. Defaults to ''"
+        required: false
+runs:
+    using: "composite"
+    steps:
+        - run: ${{ github.action_path }}/push.sh
+          shell: bash
+          env:
+              COMMIT_MESSAGE: ${{ inputs.commit-message }}
+              DESTINATION_GITHUB_USERNAME: ${{ inputs.destination-github-username }}
+              DESTINATION_REPOSITORY_NAME: ${{ inputs.destination-repository-name }}
+              SOURCE_DIRECTORY: ${{ inputs.source-directory }}
+              PRODUCT_DIRECTORY: ${{ inputs.product-directory }}
+              TARGET_BRANCH: ${{ inputs.target-branch }}
+              GIT_USERNAME: ${{ inputs.git-username }}
+              GIT_EMAIL: ${{ inputs.git-email }}
+              ACTION_PATH: ${{ github.action_path }}
