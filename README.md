@@ -25,7 +25,7 @@ All the SDKs must have `SDK_DOCS_GH_TOKEN` added to their secrets.
 
 ```yml
       - name: Push SDK Docs to Central Repo
-        uses: GetStream/push-stream-chat-docusaurus-action@main
+        uses: GetStream/stream-sdk-docs-push-action@main
         with:
           product-directory: ${{ 'chat' }}
         env:    
