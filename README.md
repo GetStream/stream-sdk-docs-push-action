@@ -14,7 +14,7 @@ This is designed in a way that it works for all the products of [Stream](https:/
 | `source-directory`            | Source directory from the origin(SDK) repository                                        | `false`  | docusaurus                |
 | `product-directory`           | Product directory where the documentation should go. Eg: chat, video, etc.              | `true`   |                           |
 | `target-branch`               | [Optional] set target branch name for the destination repository. Defaults to "staging" | `false`  | staging                   |
-| `git-username`                | [Optional] Name for the git commit. Defaults to the CI Bot name                         | `false`  | stream-ci-bot             |
+| `git-username`                | [Optional] Name for the git commit. Defaults to the CI Bot name                         | `false`  | stream-public-bot         |
 | `git-email`                   | [Optional] Email for the git commit. Defaults to ''                                     | `false`  | ""                        |
 
 **Note**: `product-directory` is a required input variable and must be provided for the action to push the docs in the appropriate product directory.

@@ -25,7 +25,7 @@ inputs:
         description: '[Optional] set target branch name for the destination repository. Defaults to "staging"'
         required: false
     git-username:
-        default: "stream-ci-bot"
+        default: "stream-public-bot"
         description: "[Optional] Name for the git commit. Defaults to the CI Bot name"
         required: false
     git-email:
