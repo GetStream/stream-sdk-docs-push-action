@@ -1,5 +1,3 @@
-#!/bin/bash
-
 set -e  # if a command fails it stops the execution
 set -u  # script fails if trying to access to an undefined variable
 
@@ -11,7 +9,7 @@ git config --global user.name "$GIT_USERNAME"
 git config --global user.email "$GIT_EMAIL"
 
 # Clone the repository with the single branch as $TARGET_BRANCH to the temporary directory
-git clone --single-branch --branch "$TARGET_BRANCH" "https://$GIT_USERNAME:$STREAM_DOCS_GH_TOKEN@github.com/$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" "$CLONE_DIR"
+git clone --single-branch --branch "$TARGET_BRANCH" "https://$GIT_USERNAME:$SDK_DOCS_GH_TOKEN@github.com/$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" "$CLONE_DIR"
 ls -la "$CLONE_DIR"
 
 SDKs=$(find ./"$SOURCE_DIRECTORY"/docs -maxdepth 1 -mindepth 1 -type d | awk -F'/' '{print $4}')
@@ -55,4 +53,4 @@ git diff-index --quiet HEAD || git commit -m "$COMMIT_MESSAGE"
 # Push the changes
 # --set-upstream: sets default branch when pushing to a branch that does not exist
 echo "Pushing the changes"
-git push "https://$GIT_USERNAME:$STREAM_DOCS_GH_TOKEN@github.com/$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" --set-upstream "$TARGET_BRANCH"
+git push "https://$GIT_USERNAME:$SDK_DOCS_GH_TOKEN@github.com/$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" --set-upstream "$TARGET_BRANCH"
