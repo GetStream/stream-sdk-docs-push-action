@@ -11,7 +11,7 @@ git config --global user.name "$GIT_USERNAME"
 git config --global user.email "$GIT_EMAIL"
 
 # Clone the repository with the single branch as $TARGET_BRANCH to the temporary directory
-git clone --single-branch --branch "$TARGET_BRANCH" "https://$STREAM_DOCS_GH_TOKEN@github.com/$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" "$CLONE_DIR"
+git clone --single-branch --branch "$TARGET_BRANCH" "https://$GIT_USERNAME:$STREAM_DOCS_GH_TOKEN@github.com/$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" "$CLONE_DIR"
 ls -la "$CLONE_DIR"
 
 SDKs=$(find ./"$SOURCE_DIRECTORY"/docs -maxdepth 1 -mindepth 1 -type d | awk -F'/' '{print $4}')
